@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SPAMFILTER</title>
+</head>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+	.back {
+		width: 1270px;
+        height: 615px;
+		margin-top: -15px;
+		margin-left: -8px;
+		margin-right: -10px;
+		margin-bottom: -60px;
+		position: relative;
+	}
+	.shadow {
+	  -moz-box-shadow:    3px 3px 5px 6px #F0FFFF;
+	  -webkit-box-shadow: 3px 3px 5px 6px #F0FFFF;
+	  box-shadow:         3px 3px 5px 6px #F0FFFF;
+	  position: absolute;
+	  width: 600px;
+	  height: 300px;
+	  top: 100px;
+	  left: 350px;
+	  bottom: 0;
+	  right: 0;
+    }
+    .button2 {
+	  background: transparent; 
+	  color: white;
+	  font-size: 30px; 
+	  border: 2px solid #008CBA;
+	  width: 200px;
+	  height: 50px;
+	  position: absolute;
+	  top: 450px;
+	  left: 700px;
+	  bottom: 0;
+	  right: 0;
+	  border-radius: 5px;
+	}
+
+	.button2:hover {
+	  background-color: #008CBA;
+	  color: white;
+    }
+     .button3 {
+	  background: transparent; 
+	  color: white;
+	  font-size: 30px; 
+	  border: 2px solid #008CBA;
+	  width: 200px;
+	  height: 50px;
+	  position: absolute;
+	  top: 450px;
+	  left: 400px;
+	  bottom: 0;
+	  right: 0;
+	  border-radius: 5px;
+	}
+
+	.button3:hover {
+	  background-color: #008CBA;
+	  color: white;
+	}
+    .success-msg {
+	  color: #270;
+	  background-color: #dff2bf;
+	  position: absolute;
+	  top: 540px;
+	  left: 500px;
+	  bottom: 0;
+	  right: 0;
+	  width: 300px;
+	  height: 30px;
+	  font-size: 20px;
+    }
+    .error-msg {
+	  color: #d8000c;
+	  background-color: #ffbaba;
+	  position: absolute;
+	  top: 540px;
+	  left: 500px;
+	  bottom: 0;
+	  right: 0;
+	  width: 300px;
+	  height: 30px;
+	  font-size: 20px;
+}
+</style>
+<body>
+	<form action='spamfilter' method='post'>
+	<img src="/static/images/4.jpg" class="back" >
+	<h1 style="position: absolute;top:0;bottom: 0;left: 550px;right: 0;color: white;font-family: Arial, Helvetica, sans-serif;">Spam - Filter</h1>
+	<div class="shadow">
+		{% if value==0 or value==1 %}
+		<textarea type="text" name="message" id="message" style="height: 300px;width :600px;background:transparent;font-size: 20px;color: white;outline: none;border:none;" required="" placeholder="Type your message.." >{{org}}</textarea>	
+		{% else %}
+		<textarea type="text" name="message" id="message" style="height: 300px;width :600px;background:transparent;font-size: 20px;color: white;outline: none;border:none;" required="" placeholder="Type your message.." ></textarea>
+	    {% endif %}
+	</div>
+		<button class="button2" type="submit">Check...</button>
+	</form>
+	<form action="reset" method="post">
+		<button class="button3" type="submit">Reset...</button>
+	</form>
+	{% if value==0 %}
+	<div class="success-msg">
+	  <i class="fa fa-check"></i>
+	  Your Message is Not Spam...
+	</div>
+	{% endif %}
+	{% if value==1 %}
+	<div class="error-msg">
+	  <i class="fa fa-times-circle"></i>
+	  Spam Message Detected...
+	</div>
+	{% endif %}
+</body>
+</html>
